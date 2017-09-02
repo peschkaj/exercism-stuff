@@ -40,71 +40,60 @@ fn test_twenty_two() {
 }
 
 #[test]
-#[ignore]
 fn test_one_hundred() {
     assert_eq!(say::encode(100), String::from("one hundred"));
 }
 
 // note, using American style with no and
 #[test]
-#[ignore]
 fn test_one_hundred_twenty() {
     assert_eq!(say::encode(120), String::from("one hundred twenty"));
 }
 
 #[test]
-#[ignore]
 fn test_one_hundred_twenty_three() {
     assert_eq!(say::encode(123), String::from("one hundred twenty-three"));
 }
 
 #[test]
-#[ignore]
 fn test_one_thousand() {
     assert_eq!(say::encode(1000), String::from("one thousand"));
 }
 
 #[test]
-#[ignore]
 fn test_one_thousand_two_hundred_thirty_four() {
     assert_eq!(say::encode(1234), String::from("one thousand two hundred thirty-four"));
 }
 
 // note, using American style with no and
 #[test]
-#[ignore]
 fn test_eight_hundred_and_ten_thousand() {
     assert_eq!(say::encode(810_000), String::from("eight hundred ten thousand"));
 }
 
 #[test]
-#[ignore]
 fn test_one_million() {
     assert_eq!(say::encode(1_000_000), String::from("one million"));
 }
 
 // note, using American style with no and
 #[test]
-#[ignore]
 fn test_one_million_two() {
     assert_eq!(say::encode(1_000_002), String::from("one million two"));
 }
 
 #[test]
-#[ignore]
 fn test_1002345() {
     assert_eq!(say::encode(1_002_345),
                String::from("one million two thousand three hundred forty-five"));
 }
 
 #[test]
-#[ignore]
 fn test_one_billion() {
     assert_eq!(say::encode(1_000_000_000), String::from("one billion"));
 }
 
 #[test]
-#[ignore]
 fn test_987654321123() {
     assert_eq!(say::encode(987_654_321_123),
                String::from("nine hundred eighty-seven billion \
