@@ -82,8 +82,7 @@ fn get_tens(n: usize) -> String {
         4 => "forty",
         3 => "thirty",
         2 => "twenty",
-        1 => get_teens(n),
-        0 => get_teens(n),
+        1 | 0 => get_teens(n),
         _ => panic!("what"),
     }.to_string();
 
