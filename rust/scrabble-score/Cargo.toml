@@ -1,0 +1,6 @@
+[package]
+name = "scrabble-score"
+version = "1.0.0"
+
+[dependencies]
+maplit = "0.1.4"
