@@ -3,12 +3,10 @@ extern crate maplit;
 
 use std::collections::HashMap;
 
+const ACGT: [char; 4] = ['A', 'C', 'G', 'T'];
+
 pub fn count(nucleotide: char, dna: &'static str) -> Result<usize, &'static str> {
-    if nucleotide != 'A' && nucleotide != 'C' && nucleotide != 'G' && nucleotide != 'T' ||
-        dna.chars().any(
-            |x| x != 'A' && x != 'C' && x != 'G' && x != 'T',
-        )
-    {
+    if ACGT.iter().all(|x| x != &nucleotide) || !dna.chars().all(|x| ACGT.contains(&x)) {
         return Err("mismatch");
     }
 
@@ -21,10 +19,7 @@ pub fn count(nucleotide: char, dna: &'static str) -> Result<usize, &'static str>
 }
 
 pub fn nucleotide_counts<'a>(dna: &'a str) -> Result<HashMap<char, usize>, &'static str> {
-    if dna.chars().any(
-        |x| x != 'A' && x != 'C' && x != 'G' && x != 'T',
-    )
-    {
+    if !dna.chars().all(|x| ACGT.contains(&x)) {
         return Err("nope!");
     }
 
