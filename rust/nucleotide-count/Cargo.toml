@@ -1,3 +1,6 @@
 [package]
 name = "nucleotide-count"
 version = "0.0.0"
+
+[dependencies]
+maplit = "0.1.4"
