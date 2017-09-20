@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 pub fn word_count(sentence: &str) -> HashMap<String, u32> {
-    let mut word_counts: HashMap<String, u32> = HashMap::new();
+    let mut word_counts = HashMap::new();
 
     let words: Vec<String> = sentence
         .split(|c: char| !c.is_alphanumeric())
