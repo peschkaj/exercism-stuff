@@ -14,7 +14,5 @@ pub fn word_count(sentence: &str) -> HashMap<String, u32> {
         *word_counts.entry(word).or_insert(0) += 1;
     }
 
-    println!("{:?}", word_counts);
-
     word_counts
 }
