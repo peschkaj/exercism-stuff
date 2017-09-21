@@ -1,39 +1,30 @@
-use std::collections::HashMap;
+// Inspired by http://exercism.io/submissions/fb582a6f657742bdb087c6e3162c509e
+// and http://exercism.io/submissions/3294884e643a485ba1c367f370d16745
+
+extern crate itertools;
+use itertools::Itertools;
+
+const CHUNK_SIZE: usize = 5;
 
 pub fn decode(cypher: &str) -> String {
-    translate(cypher).chars().filter(|c| *c != ' ').collect::<String>()
+    cypher.chars().filter_map(encode_char).collect::<String>()
 }
 
 pub fn encode(plaintext: &str) -> String {
-    translate(plaintext)
-}
-
-fn translate(source: &str) -> String {
-    let allowed = "abcdefghijklmnopqrstuvwxyz01233456789";
-    let m = build_map();
-
-    source
+    plaintext
         .to_lowercase()
         .chars()
-        .filter(|c| allowed.chars().any(|x| x == *c))
-        .map(|c| if c.is_numeric() { c } else { m[&c] })
-        .collect::<Vec<char>>()
-        .chunks(5)
-        .fold(String::new(), |mut s, chunk| {
-            s.push_str(" ");
-            s.push_str(&(*chunk).to_vec().into_iter().collect::<String>());
-            s
-        })
-        .trim()
-        .to_string()
+        .filter_map(encode_char)
+        .chunks(CHUNK_SIZE)
+        .into_iter()
+        .map(|mut chunk| chunk.join(""))
+        .join(" ")
 }
 
-fn build_map() -> HashMap<char, char> {
-    let plain: Vec<char> = "abcdefghijklmnopqrstuvwxyz".chars().collect();
-    let mut cypher = "zyxwvutsrqponmlkjihgfedcba".chars();
-
-    plain.iter().fold(HashMap::new(), |mut map, p| {
-        map.insert(*p, cypher.next().unwrap());
-        map
-    })
+fn encode_char(c: char) -> Option<char> {
+    match c {
+        'a'...'z' => Some(('z' as u8 - (c as u8 - 'a' as u8)) as char),
+        '0'...'9' => Some(c),
+        _ => None,
+    }
 }
