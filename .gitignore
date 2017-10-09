@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/rust,code
 
 ### Code ###
@@ -22,5 +21,11 @@ Cargo.lock
 **/debug/*
 **/release/*
 **/rls/*
+
+# Racket artifacts
+**/compiled/*
+
+# Editor turds
+*~
 
 # End of https://www.gitignore.io/api/rust,code
