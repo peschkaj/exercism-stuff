@@ -17,8 +17,7 @@
 (define (shout? shout)
   (let* ([just-letters (strip-non-letters shout)])
     (and (non-empty-string? just-letters)
-         (equal? just-letters (string-upcase just-letters))))
-  )
+         (equal? just-letters (string-upcase just-letters)))))
 
 (define (question? question)
   (string-suffix? question "?"))
