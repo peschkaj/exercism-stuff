@@ -2,8 +2,9 @@
 
 (provide to-rna)
 
-(define (to-rna rna)
-  (list->string (map transcribe (string->list rna))))
+(define (to-rna dna)
+  (list->string (for/list ([x dna])
+                  (transcribe x))))
 
 (define (transcribe x)
   (cond [(equal? x #\G) #\C]
