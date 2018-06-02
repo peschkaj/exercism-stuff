@@ -29,3 +29,32 @@ Cargo.lock
 *~
 
 # End of https://www.gitignore.io/api/rust,code
+
+
+# Created by https://www.gitignore.io/api/haskell
+
+### Haskell ###
+dist
+dist-*
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+*.eventlog
+.stack-work/
+cabal.project.local
+.HTF/
+.stack-work/
+
+
+# End of https://www.gitignore.io/api/haskell
