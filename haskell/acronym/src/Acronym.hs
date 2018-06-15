@@ -6,9 +6,6 @@ import Data.Char
 import Data.List.Split
 
 abbreviate :: String -> String
-abbreviate xs = concatMap letters ws
-  where ws        = filter (not . null) $ splitOneOf " ,-" xs
-        letters w = if c then [first] else first : filtered
-          where c        = length (tail w) == length filtered
-                filtered = filter isUpper $ tail w
-                first    = toUpper $ head w
+abbreviate = concatMap (fmap toUpper . collect) . splitOneOf " -"
+   where collect wd = if null uppers then pure (head wd) else uppers
+           where uppers = if all isUpper wd then pure (head wd) else filter isUpper wd
