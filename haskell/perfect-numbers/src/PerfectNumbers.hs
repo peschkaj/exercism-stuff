@@ -4,9 +4,12 @@ data Classification = Deficient | Perfect | Abundant deriving (Eq, Show)
 
 classify :: Int -> Maybe Classification
 classify x | x <= 0 = Nothing
-           | otherwise = case aliquotSum of as | as == x   -> Just Perfect
-                                               | as > x    -> Just Abundant
-                                               | otherwise -> Just Deficient
+           | otherwise = case compare x aliquotSum of EQ -> Just Perfect
+                                                      GT -> Just Deficient
+                                                      LT -> Just Abundant
+           -- | otherwise = case aliquotSum of as | as == x   -> Just Perfect
+           --                                     | as > x    -> Just Abundant
+           --                                     | otherwise -> Just Deficient
   where aliquotSum = aliquot x
 
         aliquot :: Int -> Int
