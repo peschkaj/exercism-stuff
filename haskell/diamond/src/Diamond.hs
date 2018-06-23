@@ -5,7 +5,7 @@ import Data.Char
 diamond :: Char -> Maybe [String]
 diamond c | c =='A'   = Just ["A" :: String]
 diamond c | otherwise = Just $ diamondUp (prevChar c) (distance - 1)
-                               ++ [[c] ++ replicate (distance * 2 - 1) ' ' ++ [c]]
+                               ++ row distance c
                                ++ diamondDown (prevChar c) (distance - 1)
   where distance = ord c - ord 'A'
         width = (2 * distance) + 1
@@ -14,6 +14,7 @@ diamond c | otherwise = Just $ diamondUp (prevChar c) (distance - 1)
                    | otherwise = '_'
 
         dots n = replicate n ' '
+
         row n char = [dots outer ++ [char] ++ dots inner ++ [char] ++ dots outer]
           where outer = distance - n
                 inner = width - (2 * outer) - 2
