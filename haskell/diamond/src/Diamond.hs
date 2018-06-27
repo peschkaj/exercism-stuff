@@ -2,7 +2,24 @@ module Diamond (diamond) where
 
 import Data.Char
 
+
+{-
+-- This "feels" more Haskell-y, but it's a tiny bit slower than the solution I actually used.
+-- I suspect that this solution ends up doing all the work all the time, while I think the
+-- one below gets some smalla dvantage from reusing `dots`
 diamond :: Char -> Maybe [String]
+diamond c | isAlpha c = Just mkDiamond
+          | otherwise = Nothing
+  where letters = ['A' .. c]
+        l       = length letters
+        ltrsrtl = letters ++ reverse (init letters)
+        mkDiamond = map row ltrsrtl
+        row char  = [ mkChar char x | x <- [1..(length mkDiamond)]]
+
+        mkChar c n | l - (fromEnum c - fromEnum 'A') == n = c
+                   | l + (fromEnum c - fromEnum 'A') == n = c
+                   | otherwise                            = ' '
+-}
 diamond c | c =='A'   = Just ["A" :: String]
 diamond c | otherwise = Just $ diamondUp (prevChar c) (distance - 1)
                                ++ row distance c
