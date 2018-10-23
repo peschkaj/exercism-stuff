@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 731a7c7b85db86c407823dc04d8cec0782e2daca747fabca7fb471e56b140c83
+-- hash: 9b3d55e3b5c21435908be5fe4559088dfbbcd729ec5df3dd2f4a727baff0553c
 
 name:           perfect-numbers
-version:        1.1.0.2
+version:        1.1.0.3
 build-type:     Simple
 cabal-version:  >= 1.10
 
