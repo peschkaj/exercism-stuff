@@ -2,35 +2,33 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 494e72adea5985cfc58324a6b4808248a9630902205255754d7bfa22bf62e356
+-- hash: c61614f80f01a19848d7cd45c753d5ee47739b1b8af456f46b269c7182299b6b
 
-name:           acronym
-version:        1.4.0.6
+name:           leap
+version:        1.4.0.7
 build-type:     Simple
 cabal-version:  >= 1.10
 
 library
   exposed-modules:
-      Acronym
+      LeapYear
   other-modules:
-      Paths_acronym
+      Paths_leap
   hs-source-dirs:
       src
   build-depends:
       base
-    , split
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
   other-modules:
-      Paths_acronym
+      Paths_leap
   hs-source-dirs:
       test
   build-depends:
-      acronym
-    , base
+      base
     , hspec
-    , split
+    , leap
   default-language: Haskell2010

@@ -2,35 +2,33 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 494e72adea5985cfc58324a6b4808248a9630902205255754d7bfa22bf62e356
+-- hash: ea070d6e0030d2b7bf968e13f9e2aca4aeaf86e84d1148217e41c172bc8f5b37
 
-name:           acronym
-version:        1.4.0.6
+name:           hello-world
+version:        1.1.0.4
 build-type:     Simple
 cabal-version:  >= 1.10
 
 library
   exposed-modules:
-      Acronym
+      HelloWorld
   other-modules:
-      Paths_acronym
+      Paths_hello_world
   hs-source-dirs:
       src
   build-depends:
       base
-    , split
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
   other-modules:
-      Paths_acronym
+      Paths_hello_world
   hs-source-dirs:
       test
   build-depends:
-      acronym
-    , base
+      base
+    , hello-world
     , hspec
-    , split
   default-language: Haskell2010
