@@ -14,12 +14,17 @@ data Planet = Mercury
             | Neptune
             deriving (Eq)
 
+secondsPerYear = 31557600
+
+orbitalPeriod :: Planet -> Float
+orbitalPeriod Mercury = 0.2408467
+orbitalPeriod Venus   = 0.61519726
+orbitalPeriod Earth   = 1
+orbitalPeriod Mars    = 1.8808158
+orbitalPeriod Jupiter = 11.862615
+orbitalPeriod Saturn  = 29.447498
+orbitalPeriod Uranus  = 84.016846
+orbitalPeriod Neptune = 164.79132
+
 ageOn :: Planet -> Float -> Float
-ageOn planet seconds | planet == Mercury = ageOn Earth seconds / 0.2408467
-                     | planet == Venus   = ageOn Earth seconds / 0.61519726
-                     | planet == Mars    = ageOn Earth seconds / 1.8808158
-                     | planet == Jupiter = ageOn Earth seconds / 11.862615
-                     | planet == Saturn  = ageOn Earth seconds / 29.447498
-                     | planet == Uranus  = ageOn Earth seconds / 84.016846
-                     | planet == Neptune = ageOn Earth seconds / 164.79132
-                     | otherwise         = seconds / 31557600
+ageOn p s = s / secondsPerYear / orbitalPeriod p
