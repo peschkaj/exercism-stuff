@@ -22,17 +22,21 @@ responseFor xs = case questionType xs of
         EverythingElse -> "Whatever."
 
 questionType :: String -> Query
-questionType xs | null word             = NoQuery
-                | ("?" `isSuffixOf` word) && not (isShout word) = Question
-                | "?" `isSuffixOf` word = ShoutQuestion
-                | isShout word          = Shout
-                | otherwise             = EverythingElse
-    where
-        word = trim xs
-        trim = unwords . words
+questionType xs | isSilent word                         = NoQuery
+                | isQuestion word && not (isShout word) = Question
+                | isQuestion word                       = ShoutQuestion
+                | isShout word                          = Shout
+                | otherwise                             = EverythingElse
+        where word = unwords $ words xs
+
+isSilent :: String -> Bool
+isSilent = null
+
+isQuestion :: String -> Bool
+isQuestion q = "?" `isSuffixOf` filter isPunctuation q
 
 isShout :: String -> Bool
-isShout s | word == ""       = False
+isShout s | word == ""     = False
           | all isUpper word = True
-          | otherwise        = False
+          | otherwise      = False
         where word = filter isAlpha s
