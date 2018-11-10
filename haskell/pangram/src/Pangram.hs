@@ -5,4 +5,5 @@ import Data.List
 
 isPangram :: String -> Bool
 isPangram text = letters == ['a'..'z']
-  where letters = sort . nub $ filter (`elem` ['a'..'z']) $ map toLower text
+  where letters = sort . nub $ filter isAsciiLower $ map toLower text
+

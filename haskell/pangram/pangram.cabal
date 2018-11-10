@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 527a843d0adb5210cb75742eb178eb054ad4f82c409df946428bcda4b0983032
+-- hash: 6e7511f12553855bdd0b1a4c0b4b9237ecf9bbaf45e22bee44a2825bcee6fd28
 
 name:           pangram
-version:        1.4.0.6
+version:        1.4.1.7
 build-type:     Simple
 cabal-version:  >= 1.10
 
