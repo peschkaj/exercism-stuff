@@ -1,15 +1,14 @@
-name: phone-number
-version: 1.6.1.8
+name: crypto-square
+version: 3.2.0.5
 
 dependencies:
   - base
 
 library:
-  exposed-modules: Phone
+  exposed-modules: CryptoSquare
   source-dirs: src
-  ghc-options: -Wall
   dependencies:
-    - containers
+  - split
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
@@ -18,5 +17,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - phone-number
+      - crypto-square
       - hspec

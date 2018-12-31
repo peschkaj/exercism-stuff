@@ -1,37 +1,35 @@
-cabal-version: 1.12
-
--- This file has been generated from package.yaml by hpack version 0.31.1.
+-- This file has been generated from package.yaml by hpack version 0.28.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e8ec9342830dcdf3e67d67f27c50fbc0a79890fe4d5d83f9c014c0bcd7f5a950
+-- hash: e342870d5127cd7d494214ab05e47fa286bb384661c2aa306c848614a8fc0ae5
 
-name:           phone-number
-version:        1.6.1.8
+name:           crypto-square
+version:        3.2.0.5
 build-type:     Simple
+cabal-version:  >= 1.10
 
 library
   exposed-modules:
-      Phone
+      CryptoSquare
   other-modules:
-      Paths_phone_number
+      Paths_crypto_square
   hs-source-dirs:
       src
-  ghc-options: -Wall
   build-depends:
       base
-    , containers
+    , split
   default-language: Haskell2010
 
 test-suite test
   type: exitcode-stdio-1.0
   main-is: Tests.hs
   other-modules:
-      Paths_phone_number
+      Paths_crypto_square
   hs-source-dirs:
       test
   build-depends:
       base
+    , crypto-square
     , hspec
-    , phone-number
   default-language: Haskell2010
