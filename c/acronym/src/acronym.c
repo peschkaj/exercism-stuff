@@ -1,51 +1,47 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include "acronym.h"
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-char *abbreviate(const char *phrase) {
+char*
+abbreviate(const char* phrase) {
   // Check for NULL or empty
-  if (!phrase || *phrase == '\0') {
+  if (!phrase || '\0' == *phrase) {
     return NULL;
   }
 
-  size_t elems = 1, i = 0, len = strlen(phrase);
-  char delims[2] = "- ";
+  size_t elems = 1;
+  char delims[] = "- ";
+  // Use p to scan phrase
+  const char* p = phrase;
 
-  char* p = malloc(len);
-  strncpy(p, phrase, len);
-
-  // count delimiters for building the acronym
-  for (; i < len; ++i) {
-    if (strchr(delims, p[i])) {
+  // count delimiters
+  for (; '\0' != *p; ++p) {
+    if (strchr(delims, *p)) {
       ++elems;
-      // standardize on ' ' as the delimiter
-      if (p[i] != ' ') {
-        p[i] = ' ';
-      }
     }
   }
 
-  // Adds an additional placeholder for the last word and then \0
+  // Adds an additional placeholder for \0
   elems += 1;
 
-  // allocate space for each word
+  // reset p
+  p = phrase;
+
+  // allocate space for each letter of the acronym
   char* acronym = (char*)malloc(elems);
-  memset(acronym, 'a', elems);
-  acronym[elems] = '\0';
+  // Use r for filling acronym
+  char* r = acronym;
+  *(r++) = toupper(*p);
 
-  // tokenize the phrase into words
-  i = 0;
-  char* token = strtok(p, " ");
-  while (token) {
-    acronym[i++] = toupper(*token);
-    token = strtok(NULL, " ");
+  // scan phrase looking for boundaries
+  for (; '\0' != *p; ++p) {
+    if (strchr(delims, *p)) {
+      // at a word boundary, copy the _next_ character
+      *(r++) = toupper(*(p + 1));
+    }
   }
-
-  acronym[i] = '\0';
-
-  free(p);
 
   return acronym;
 }
